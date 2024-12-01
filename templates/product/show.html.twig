@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block body %}
+    <h1>{{ product.name }}</h1>
+    <p><strong>Description:</strong> {{ product.description }}</p>
+    <p><strong>Price:</strong> ${{ product.price }}</p>
+    <p><strong>Stock:</strong> {{ product.stock }}</p>
+    <p><strong>Category:</strong> {{ product.category.name }}</p>
+    {% if product.image %}
+    <img src="{{ asset('uploads/images/' ~ product.image) }}" alt="{{ product.name }}" width="200">
+    {% else %}
+        <p>No image available</p>
+    {% endif %}
+
+
+    <a href="{{ path('product_index') }}" class="btn btn-secondary">Back to List</a>
+    <a href="{{ path('product_edit', { id: product.id }) }}" class="btn btn-primary">Edit</a>
+    <form method="post" action="{{ path('product_delete', { id: product.id }) }}" style="display:inline;">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+{% endblock %}

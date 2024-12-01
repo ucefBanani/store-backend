@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order Details{% endblock %}
+
+{% block body %}
+    <h1>Order Details</h1>
+
+    <a href="{{ path('admin_order_list') }}" class="btn btn-secondary">Back to List</a>
+
+    <h3>Order Information</h3>
+    <ul>
+        <li><strong>ID:</strong> {{ order.id }}</li>
+        <li><strong>User:</strong> {{ order.user.email }}</li>
+        <li><strong>Status:</strong> {{ order.status }}</li>
+        <li><strong>Total:</strong> {{ order.total|number_format(2, '.', ',') }} €</li>
+        <li><strong>Created At:</strong> {{ order.createdAt|date('Y-m-d H:i:s') }}</li>
+    </ul>
+
+    <h3>Items</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total Price</th> <!-- Added column for item total price -->
+            </tr>
+        </thead>
+        <tbody>
+            {% set orderTotal = 0 %}
+            {% for item in order.items %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.price|number_format(2, '.', ',') }} €</td>
+                    <td>{{ (item.quantity * item.price)|number_format(2, '.', ',') }} €</td> <!-- Total for each item -->
+                </tr>
+                {% set orderTotal = orderTotal + (item.quantity * item.price) %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h4>Total Price of Order: {{ orderTotal|number_format(2, '.', ',') }} €</h4>
+
+{% endblock %}

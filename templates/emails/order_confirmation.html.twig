@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Confirmation</title>
+</head>
+<body>
+    <h1>Thank you for your order, {{ user.email }}!</h1>
+    <p>Your order (ID: {{ order.id }}) has been received and is being processed.</p>
+    <p>Details:</p>
+    <ul>
+        <li><strong>Total:</strong> {{ order.total|number_format(2, '.', ',') }} €</li>
+        <li><strong>Date:</strong> {{ order.createdAt|date('Y-m-d H:i:s') }}</li>
+    </ul>
+    <p>Thank you for shopping with us!</p>
+</body>
+</html>
