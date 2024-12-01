@@ -17,3 +17,32 @@ docker compose up -d --build
 - Interface mailcatcher (serveur d'emails en local) : [localhost:1080](http://localhost:1080/)
 
 Vous pouvez changer les ports en modifiant dans le fichier **.docker/docker-compose.yml**.
+
+### Commandes utiles
+-Accéder au conteneur PHP
+Pour exécuter des commandes Symfony comme les migrations ou fixtures, entrez dans le conteneur PHP avec la commande suivante :
+
+  ###  docker exec -it store-php-1 bash
+
+Exemple de commandes Symfony :
+
+Appliquer les migrations :
+ 
+  - php bin/console doctrine:migrations:migrate
+
+
+Exécuter les fixtures :
+
+  - php bin/console doctrine:fixtures:load
+
+
+### Structure du projet
+
+Backend (Symfony) 
+
+Frontend (React)
+ 
+Base de données
+La base de données est configurée avec MySQL et est accessible via PhpMyAdmin.
+
+
