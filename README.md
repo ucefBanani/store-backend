@@ -16,7 +16,7 @@ docker compose up -d --build
 - Interface PhpMyadmin : [localhost:8089](http://localhost:8089/)
 - Interface mailcatcher (serveur d'emails en local) : [localhost:1080](http://localhost:1080/)
 
-Vous pouvez changer les ports en modifiant dans le fichier **.docker/docker-compose.yml**.
+Vous pouvez modifier les ports, volumes ou l'emplacement du projet en modifiant le fichier **.docker/docker-compose.yml**.
 
 ### Commandes utiles
 -Accéder au conteneur PHP
