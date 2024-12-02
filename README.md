@@ -16,6 +16,13 @@ docker compose up -d --build
 - Interface PhpMyadmin : [localhost:8089](http://localhost:8089/)
 - Interface mailcatcher (serveur d'emails en local) : [localhost:1080](http://localhost:1080/)
 
+## Base de Données
+
+La base de données est incluse dans le projet sous forme d'un fichier SQL nommé `dev.sql`. Vous pouvez l'importer directement dans votre instance MySQL après avoir démarré les services Docker.
+
+Pour importer la base de données, connectez-vous à PhpMyAdmin via [localhost:8089](http://localhost:8089/) et utilisez l'option **Importer** pour charger le fichier `dev.sql` situé dans le dossier du projet.
+
+
 Vous pouvez modifier les ports, volumes ou l'emplacement du projet en modifiant le fichier **.docker/docker-compose.yml**.
 
 ### Commandes utiles
